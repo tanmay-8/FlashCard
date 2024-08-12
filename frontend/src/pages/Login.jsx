@@ -1,13 +1,15 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
-    const toggleForm = () => {
-        setIsLogin(!isLogin);
-    };
+
+    useEffect(() => {
+        if (localStorage.getItem("token") !== null) {
+            navigate("/");
+        }
+    });
     const login = async () => {
         try {
             const res = await fetch(
@@ -25,7 +27,8 @@ const Login = () => {
             if (data.token) {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("role", data.role);
-                window.location.href = "/";
+
+                window.location.reload();
             } else {
                 alert(data.errors[0].msg);
             }
@@ -61,7 +64,6 @@ const Login = () => {
         }
     };
 
-    
     return (
         <div className="flex items-center justify-center h-screen bg-dark-bg text-gray-300">
             <div className="w-full max-w-md p-8 space-y-6 bg-dark-bg-sec rounded-md shadow-lg">

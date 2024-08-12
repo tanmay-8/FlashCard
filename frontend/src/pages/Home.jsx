@@ -2,15 +2,9 @@ import React, { useEffect } from "react";
 import FlashCardSets from "../components/FlashCardSets";
 
 const Home = () => {
-    const [isLogin, setIsLogin] = useState(
-        localStorage.getItem("token") ? true : false
-    );
-
     useEffect(() => {
-        setIsLogin(localStorage.getItem("token") ? true : false);
-
-        if (!isLogin) {
-            window.location.href = "/login";
+        if (localStorage.getItem("token") === null) {
+            navigate("/login");
         }
     }, []);
 
