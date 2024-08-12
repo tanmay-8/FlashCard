@@ -6,6 +6,10 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const toggleForm = () => {
+        setIsLogin(!isLogin);
+    }
+
     useEffect(() => {
         if (localStorage.getItem("token") !== null) {
             navigate("/");
