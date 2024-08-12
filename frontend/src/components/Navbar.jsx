@@ -12,6 +12,9 @@ const Navbar = () => {
 
     useEffect(() => {
         setRole(localStorage.getItem("role"));
+        if(!role) {
+            window.location.href = "/login";
+        }
     }, [role]);
 
     if(!role) {
