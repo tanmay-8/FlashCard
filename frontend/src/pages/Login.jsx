@@ -65,11 +65,7 @@ const Login = () => {
         }
     };
 
-    useEffect(() => {
-        if (isLogged) {
-            navigate("/");
-        }
-    }, [isLogged]);
+    
     return (
         <div className="flex items-center justify-center h-screen bg-dark-bg text-gray-300">
             <div className="w-full max-w-md p-8 space-y-6 bg-dark-bg-sec rounded-md shadow-lg">

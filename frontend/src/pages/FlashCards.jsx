@@ -25,8 +25,8 @@ const FlashCards = () => {
         }
       );
       const data = await res.json();
-      if (data.length > 0) {
-        setFlashcards(data);
+      if (data.flashcards) {
+        setFlashcards(data.flashcards);
       } else {
         console.log("No flashcards found");
       }
