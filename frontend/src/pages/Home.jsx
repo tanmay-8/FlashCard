@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import FlashCardSets from "../components/FlashCardSets";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+    const { navigate } = useNavigate();
     useEffect(() => {
         if (localStorage.getItem("token") === null) {
             navigate("/login");

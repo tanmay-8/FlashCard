@@ -142,10 +142,26 @@ const getFlashcard = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
+
+const getAllFlashCards = async (req, res) => {
+    try {
+        if(req.user.role.toLowerCase() !== "admin") {
+            return res.status(403).json({ msg: "Unauthorized" });
+        }
+        const flashcards = await query("SELECT * FROM flashcards");
+        res.status(200).json({
+            flashcards: flashcards,
+        });
+    } catch (err) {
+        console.error("Error getting flashcards:", err.message);
+        res.status(500).send("Server Error");
+    }
+};
 module.exports = {
     createFlashcard,
     createFlashcardSet,
     getAllSets,
     getAllFlashCardsFromSet,
     getFlashcard,
+    getAllFlashCards
 };

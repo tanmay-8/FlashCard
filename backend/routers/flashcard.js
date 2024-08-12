@@ -7,6 +7,7 @@ const {
     getAllSets,
     getAllFlashCardsFromSet,
     getFlashcard,
+    getAllFlashCards
 } = require("../controllers/flashcard");
 const auth = require("../middlewares/auth");
 
@@ -49,5 +50,7 @@ router.get("/flashcardSets", auth, getAllSets);
 router.get("/flashcards/set/:set_id", auth, getAllFlashCardsFromSet);
 
 router.get("/flashcard/:flashcard_id", auth, getFlashcard);
+
+router.get("/flashcardsall", auth, getAllFlashCards);
 
 module.exports = router;
