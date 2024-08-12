@@ -4,11 +4,7 @@ const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-
-    const [isLogged, setIsLogged] = useState(
-        localStorage.getItem("token") ? true : false
-    );
+    
     const toggleForm = () => {
         setIsLogin(!isLogin);
     };
@@ -29,7 +25,7 @@ const Login = () => {
             if (data.token) {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("role", data.role);
-                window.location.reload();
+                window.location.href = "/";
             } else {
                 alert(data.errors[0].msg);
             }
